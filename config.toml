@@ -1,0 +1,4 @@
+# 标注每个配置文件
+[[servers]]
+name = "test"
+config = "web.toml"
