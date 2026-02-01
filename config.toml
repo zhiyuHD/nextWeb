@@ -1,4 +1,9 @@
 # 标注每个配置文件
 [[servers]]
-name = "test"
+name = "test_static"
 config = "web.toml"
+
+[[servers]]
+name = "test_proxy"
+config = "proxy.toml"
+

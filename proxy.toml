@@ -1,0 +1,16 @@
+[server]
+address = "127.0.0.1"
+port = 8081
+
+[type]
+name = "proxy"
+
+[proxy]
+# 后端服务，这里代理到web.toml中的服务器
+backend = "http://127.0.0.1:8080"
+# 是否修改请求头中的host
+modify_host = true
+# 请求头中的host
+header_host = "127.0.0.1:8080"
+# 是否将响应头的Server字段修改为nextWeb和原始服务器叠加，类似这样（nextWeb(python/3.13)/0.1.0）
+modify_server = true
