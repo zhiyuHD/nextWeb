@@ -260,8 +260,13 @@ fn handle_client(stream: &mut std::net::TcpStream, server_config: &ServerConfig)
         501
     } else if response.starts_with("HTTP/1.1 502") {
         502
+    } else if response.starts_with("HTTP/1.1") {
+        // 直接返回原始状态码
+        let status_line = response.lines().next().unwrap();
+        let status_code_str = status_line.split(' ').nth(1).unwrap();
+        status_code_str.parse::<u16>().unwrap_or(500)
     } else {
-        0
+        500
     };
     
     log_access(&client_addr, &path, status_code);
